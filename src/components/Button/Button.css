@@ -210,3 +210,60 @@
     font-size: var(--font-size-sm);
   }
 } 
+
+/* Unified gradient surface for all buttons */
+.btn {
+  background: linear-gradient(135deg, #ffffff 0%, #e8e8f0 50%, #d4d4d8 100%);
+  color: var(--color-secondary);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn:hover:not(.btn--disabled) {
+  background: linear-gradient(315deg, #f0f0f8 0%, #ffffff 50%, #f8f8fc 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active:not(.btn--disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure variants keep the white gradient surface */
+.btn.btn--primary,
+.btn.btn--secondary,
+.btn.btn--outline,
+.btn.btn--ghost {
+  background: linear-gradient(135deg, #ffffff 0%, #e8e8f0 50%, #d4d4d8 100%) !important;
+}
+
+.btn.btn--primary:hover:not(.btn--disabled),
+.btn.btn--secondary:hover:not(.btn--disabled),
+.btn.btn--outline:hover:not(.btn--disabled),
+.btn.btn--ghost:hover:not(.btn--disabled) {
+  background: linear-gradient(315deg, #f0f0f8 0%, #ffffff 50%, #f8f8fc 100%) !important;
+}
+
+/* Variant-specific text and border colors on white surface */
+.btn.btn--primary { 
+  color: var(--color-secondary) !important; 
+  border-color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.btn.btn--secondary { 
+  color: var(--color-secondary) !important; 
+  border-color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+.btn.btn--outline { 
+  color: var(--color-primary) !important; 
+  border-color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+.btn.btn--ghost { 
+  color: var(--color-gray-700) !important; 
+  border-color: rgba(255, 255, 255, 0.1);
+  font-weight: var(--font-weight-medium);
+} 

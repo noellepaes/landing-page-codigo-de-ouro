@@ -104,25 +104,27 @@ export const Header: React.FC<HeaderProps> = ({
               <li className="header__nav-item">
                 <button
                   className="header__nav-link"
-                  onClick={() => handleNavClick('services')}
-                >
-                  Serviços
-                </button>
-              </li>
-              <li className="header__nav-item">
-                <button
-                  className="header__nav-link"
                   onClick={() => handleNavClick('testimonials')}
                 >
                   Depoimentos
                 </button>
               </li>
+
               <li className="header__nav-item">
                 <button
                   className="header__nav-link"
                   onClick={() => handleNavClick('contact')}
                 >
                   Contato
+                </button>
+              </li>
+
+              <li className="header__nav-item">
+                <button
+                  className="header__nav-link"
+                  onClick={() => handleNavClick('offer')}
+                >
+                  Comprar
                 </button>
               </li>
             </ul>

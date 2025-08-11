@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../Button';
 import { CTAButton } from '../CTA';
 import './LandingPage.css';
-import bg from '../../assets/background.png';
+import iaImage from '../../assets/IA.png';
 
 export interface LandingPageProps {
   className?: string;
@@ -13,13 +13,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 }) => {
   const handleGetStarted = () => {
     const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleLearnMore = () => {
-    const element = document.getElementById('about');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -38,12 +31,34 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     </svg>
   );
 
-  const arrowRightIcon = (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-      <polyline points="12,5 19,12 12,19"></polyline>
-    </svg>
-  );
+  // FAQ state
+  const faqs = [
+    {
+      question: 'Como as IAs funcionam na prática?',
+      answer:
+        'Elas simulam entrevistas e analisam seus documentos em tempo real, oferecendo sugestões personalizadas com base no seu perfil.'
+    },
+    {
+      question: 'Preciso ter experiência na área para usar?',
+      answer:
+        'Não. A plataforma foi criada para iniciantes e profissionais. A IA guia você passo a passo e adapta as orientações ao seu nível atual.'
+    },
+    {
+      question: 'Em quanto tempo vejo resultado?',
+      answer:
+        'Geralmente nas primeiras sessões. Após algumas simulações e ajustes no currículo/LinkedIn, você já percebe ganhos de clareza e confiança.'
+    },
+    {
+      question: 'Posso usar quantas vezes quiser?',
+      answer:
+        'Sim. O uso é ilimitado durante o período contratado: você pode praticar entrevistas e refinar seus materiais quantas vezes precisar.'
+    }
+  ];
+
+  const [openIndex, setOpenIndex] = useState<number>(0);
+  const toggleFaq = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? -1 : index));
+  };
 
   return (
     <main className={`landing-page ${className}`}>
@@ -134,101 +149,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="services">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Nossos Serviços</h2>
-            <p className="section-subtitle">
-              Oferecemos soluções completas para todas as suas necessidades digitais.
-            </p>
-          </div>
-          <div className="services__grid">
-            <div className="service-card">
-              <div className="service-card__header">
-                <h3 className="service-card__title">Desenvolvimento Web</h3>
-                <p className="service-card__description">
-                  Sites e aplicações web responsivas e modernas.
-                </p>
-              </div>
-              <ul className="service-card__features">
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>React & TypeScript</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Design Responsivo</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>SEO Otimizado</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Performance Premium</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="service-card service-card--featured">
-              <div className="service-card__badge">Mais Popular</div>
-              <div className="service-card__header">
-                <h3 className="service-card__title">E-commerce Completo</h3>
-                <p className="service-card__description">
-                  Loja online completa com sistema de pagamentos integrado.
-                </p>
-              </div>
-              <ul className="service-card__features">
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Dashboard Administrativo</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Pagamentos Seguros</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Gestão de Estoque</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Analytics Integrado</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="service-card">
-              <div className="service-card__header">
-                <h3 className="service-card__title">Aplicativo Mobile</h3>
-                <p className="service-card__description">
-                  Apps nativos para iOS e Android com performance superior.
-                </p>
-              </div>
-              <ul className="service-card__features">
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>React Native</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Push Notifications</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>Offline Support</span>
-                </li>
-                <li className="service-card__feature">
-                  {checkIcon}
-                  <span>App Store Deploy</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section id="testimonials" className="testimonials">
         <div className="container">
@@ -305,56 +225,96 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="contact">
+      {/* FAQ Section (replaces Contact) */}
+      <section id="contact" className="faq">
         <div className="container">
-          <div className="contact__content">
-            <div className="contact__text">
-              <h2 className="contact__title">
-                Pronto para transformar sua ideia em realidade?
-              </h2>
-              <p className="contact__description">
-                Entre em contato conosco e descubra como podemos elevar 
-                seu negócio ao próximo nível com soluções digitais de excelência.
-              </p>
-              <div className="contact__info">
-                <div className="contact__item">
-                  <span className="contact__label">📧 Email:</span>
-                  <span className="contact__value">contato@codigodeouro.com</span>
-                </div>
-                <div className="contact__item">
-                  <span className="contact__label">📱 WhatsApp:</span>
-                  <span className="contact__value">+55 (11) 99999-9999</span>
-                </div>
-                <div className="contact__item">
-                  <span className="contact__label">⏰ Horário:</span>
-                  <span className="contact__value">Seg-Sex, 9h às 18h</span>
-                </div>
+          <div className="faq__grid">
+            <div className="faq__left">
+              <div className="faq__kicker">TIRE SUAS DÚVIDAS</div>
+              <h2 className="faq__title">Perguntas mais frequentes</h2>
+              <p className="faq__subtitle">Separamos algumas perguntas e respostas que podem te ajudar na sua decisão.</p>
+              <div className="faq__actions">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+                  icon={
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.02 2 11.3c0 2.9 1.44 5.49 3.7 7.19L5 22l3.7-1.1c1.03.29 2.12.45 3.3.45 5.52 0 10-4.52 10-10.05C22 6.02 17.52 2 12 2Zm0 18.11c-1.03 0-2-.17-2.9-.49l-.21-.07-2.11.62.61-2.02-.14-.21c-1.97-1.4-3.13-3.5-3.13-5.94 0-4.21 3.58-7.62 7.88-7.62s7.88 3.41 7.88 7.62-3.58 7.62-7.88 7.62Zm4.12-5.07c-.22-.11-1.3-.64-1.5-.71-.2-.07-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.15-.26.16-.48.05-.22-.11-.92-.34-1.75-1.1-.65-.58-1.09-1.29-1.22-1.51-.13-.22-.01-.33.1-.44.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.27-.02-.38-.05-.11-.5-1.21-.69-1.66-.18-.44-.36-.38-.5-.39-.13-.01-.28-.01-.43-.01-.15 0-.39.05-.6.27-.2.22-.79.77-.79 1.89 0 1.12.81 2.2.92 2.35.11.15 1.58 2.49 3.84 3.39.54.23.96.37 1.28.47.54.17 1.03.15 1.41.09.43-.06 1.3-.53 1.48-1.05.18-.52.18-.96.13-1.05-.05-.09-.2-.15-.42-.26Z"/>
+                    </svg>
+                  }
+                >
+                  Falar no WhatsApp
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => window.open('https://instagram.com/codigodeouro', '_blank')}
+                  icon={
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7Zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10Zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5Zm0 9A3.5 3.5 0 1 1 15.5 13 3.5 3.5 0 0 1 12 16.5ZM18 7.2a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"/>
+                    </svg>
+                  }
+                >
+                  Instagram
+                </Button>
               </div>
             </div>
-            <div className="contact__actions">
-              <Button 
-                variant="primary" 
-                size="lg"
-                onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
-                icon={arrowRightIcon}
-                iconPosition="right"
-                className="contact__button"
-              >
-                Iniciar Conversa
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={() => window.open('mailto:contato@codigodeouro.com', '_blank')}
-                className="contact__button"
-              >
-                Enviar Email
-              </Button>
+
+            <div className="faq__right">
+              <div className="faq__accordion">
+                {faqs.map((item, index) => {
+                  const isOpen = index === openIndex;
+                  return (
+                    <div key={item.question} className={`faq__item ${isOpen ? 'faq__item--open' : ''}`}>
+                      <button className="faq__question" onClick={() => toggleFaq(index)}>
+                        <span className="faq__question-text">{item.question}</span>
+                        <span className={`faq__icon ${isOpen ? 'faq__icon--open' : ''}`} aria-hidden>
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="6,9 12,15 18,9" />
+                          </svg>
+                        </span>
+                      </button>
+                      {isOpen && (
+                        <div className="faq__answer">
+                          <p>{item.answer}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Offer Section */}
+      <section className="offer" id="offer">
+        <div className="offer__container">
+          <div className="offer__card">
+            <div className="offer__left">
+              <img src={iaImage} alt="Inteligência Artificial" className="offer__left-image" />
+            </div>
+            <div className="offer__right">
+              <div className="offer__price">
+                <div className="offer__price-small">Por apenas</div>
+                <div className="offer__price-big">R$80,00</div>
+              </div>
+              <ul className="offer__list">
+                <li className="offer__list-item">{checkIcon} Ganhe tempo com preparo rápido e eficiente</li>
+                <li className="offer__list-item">{checkIcon} Feedback inteligente para evoluir de verdade</li>
+                <li className="offer__list-item">{checkIcon} Mais chances de contratação</li>
+                <li className="offer__list-item">{checkIcon} Duas IAs focadas em você e no seu sucesso profissional</li>
+              </ul>
+              <a href="#contact" className="offer__button">
+                <button className="btn btn--primary btn--lg">Comece agora e garanta sua vaga</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }; 
