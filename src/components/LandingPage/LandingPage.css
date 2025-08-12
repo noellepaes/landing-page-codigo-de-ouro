@@ -184,6 +184,7 @@
   text-align: center;
   box-sizing: border-box;
   box-shadow: 8px 20px 20px #31313154;
+  transition: all var(--transition-normal);
 }
 
 .how-it-works__card-image {
@@ -229,6 +230,14 @@
   line-height: var(--line-height-relaxed);
   margin: 0;
   padding: 0 8px;
+}
+
+/* Hover effect for cards - same as testimonials */
+.how-it-works__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: var(--color-primary);
 }
 
 .hero__content {
@@ -640,8 +649,10 @@
 
 /* Offer section overrides (scoped to Landing Page) */
 .landing-page .offer {
+  margin-top: 120px;
+  margin-bottom: 120px;
   position: relative;
-  z-index: 1;
+  
 }
 
 .landing-page .offer__container {
@@ -733,12 +744,18 @@
 
 /* Responsivo */
 @media (max-width: 1024px) {
+  .landing-page .offer {
+    margin-bottom: 60px;
+  }
   .landing-page .offer__card { grid-template-columns: 1fr; height: auto; }
   .landing-page .offer__left { height: 320px; }
   .landing-page .offer__right { padding: 48px 24px; }
 }
 
 @media (max-width: 640px) {
+  .landing-page .offer {
+    margin-bottom: 40px;
+  }
   .landing-page .offer__left { height: 240px; }
   .landing-page .offer__price-big { font-size: 36px; }
   .landing-page .offer__price-small { font-size: 16px; }
@@ -935,7 +952,7 @@
 
 /* FAQ Section */
 .faq {
-  margin-top: 312px;
+  margin-top: 80px;
   background: transparent;
 }
 
