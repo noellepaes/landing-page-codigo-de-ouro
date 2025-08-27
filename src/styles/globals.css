@@ -135,16 +135,17 @@ body::before {
   z-index: 0;
 }
 
-/* Right decorative figure at bottom-right (absolute) */
+/* Right decorative figure at bottom- (absolute) */
 .right-bg-figure--bottom {
   position: absolute;
-  right: -60px;
+  right: 1200px;
   bottom: -10px;
-  width: 480px;
-  height: 480px;
+  width: 400px;
+  height: 2500px;
   background-image: url('../assets/background.png');
   background-size: contain;
   background-repeat: no-repeat;
+  transform: rotate(180deg);
   pointer-events: none;
   z-index: 0;
 }

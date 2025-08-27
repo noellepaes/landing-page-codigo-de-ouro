@@ -3,6 +3,7 @@ import { Button } from '../Button';
 import { CTAButton } from '../CTA';
 import './LandingPage.css';
 import iaImage from '../../assets/IA.png';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 export interface LandingPageProps {
   className?: string;
@@ -124,7 +125,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="how-it-works__cards">
               <div className="how-it-works__card">
                 <div className="how-it-works__card-image">
-                  <img src="/src/assets/treinamento-para-entrevistas.png" alt="Treinamento para Entrevistas" />
+                  <img src="/src/assets/treinamento-para-entrevistas.svg" alt="Treinamento para Entrevistas" />
                 </div>
                 <div className="how-it-works__card-content">
                   <h3 className="how-it-works__card-title">Treinamento para Entrevistas</h3>
@@ -135,7 +136,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </div>
               <div className="how-it-works__card">
                 <div className="how-it-works__card-image">
-                  <img src="/src/assets/otimizacao-de-perfil.png" alt="Otimização de Perfil" />
+                  <img src="/src/assets/otimizacao-de-perfil.svg" alt="Otimização de Perfil" />
                 </div>
                 <div className="how-it-works__card-content">
                   <h3 className="how-it-works__card-title">Otimização de Perfil</h3>
@@ -238,11 +239,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   variant="primary"
                   size="lg"
                   onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
-                  icon={
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.02 2 11.3c0 2.9 1.44 5.49 3.7 7.19L5 22l3.7-1.1c1.03.29 2.12.45 3.3.45 5.52 0 10-4.52 10-10.05C22 6.02 17.52 2 12 2Zm0 18.11c-1.03 0-2-.17-2.9-.49l-.21-.07-2.11.62.61-2.02-.14-.21c-1.97-1.4-3.13-3.5-3.13-5.94 0-4.21 3.58-7.62 7.88-7.62s7.88 3.41 7.88 7.62-3.58 7.62-7.88 7.62Zm4.12-5.07c-.22-.11-1.3-.64-1.5-.71-.2-.07-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.15-.26.16-.48.05-.22-.11-.92-.34-1.75-1.1-.65-.58-1.09-1.29-1.22-1.51-.13-.22-.01-.33.1-.44.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.27-.02-.38-.05-.11-.5-1.21-.69-1.66-.18-.44-.36-.38-.5-.39-.13-.01-.28-.01-.43-.01-.15 0-.39.05-.6.27-.2.22-.79.77-.79 1.89 0 1.12.81 2.2.92 2.35.11.15 1.58 2.49 3.84 3.39.54.23.96.37 1.28.47.54.17 1.03.15 1.41.09.43-.06 1.3-.53 1.48-1.05.18-.52.18-.96.13-1.05-.05-.09-.2-.15-.42-.26Z"/>
-                    </svg>
-                  }
+                  icon={<FaWhatsapp />}
                 >
                   Falar no WhatsApp
                 </Button>
@@ -250,11 +247,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   variant="outline"
                   size="lg"
                   onClick={() => window.open('https://instagram.com/codigodeouro', '_blank')}
-                  icon={
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7Zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10Zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5Zm0 9A3.5 3.5 0 1 1 15.5 13 3.5 3.5 0 0 1 12 16.5ZM18 7.2a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"/>
-                    </svg>
-                  }
+                  icon={<FaInstagram />}
                 >
                   Instagram
                 </Button>
