@@ -73,7 +73,7 @@
   margin-top: -2px;
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation - Hidden by default, shown only on large screens */
 .header__nav {
   display: none;
 }
@@ -130,11 +130,12 @@
   gap: var(--spacing-4);
 }
 
+/* CTA Button - Hidden by default, shown only on large screens */
 .header__cta-button {
   display: none;
 }
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle - Visible by default */
 .header__menu-toggle {
   display: flex;
   align-items: center;
@@ -263,7 +264,8 @@
   }
 }
 
-@media (min-width: 768px) {
+/* Show desktop navigation and CTA button only on screens 1000px and above */
+@media (min-width: 1150px) {
   .header__nav {
     display: block;
   }

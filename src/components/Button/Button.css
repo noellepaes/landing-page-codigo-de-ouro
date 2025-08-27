@@ -30,21 +30,21 @@
   padding: var(--spacing-2) var(--spacing-4);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-tight);
-  gap: var(--spacing-2);
+  gap: var(--spacing-3);
 }
 
 .btn--md {
   padding: var(--spacing-3) var(--spacing-6);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
-  gap: var(--spacing-2);
+  gap: var(--spacing-3);
 }
 
 .btn--lg {
   padding: var(--spacing-4) var(--spacing-8);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-normal);
-  gap: var(--spacing-3);
+  gap: var(--spacing-4);
 }
 
 /* Button variants */
@@ -147,11 +147,11 @@
 }
 
 .btn__icon--left {
-  margin-right: calc(var(--spacing-2) * -1);
+  margin-right: var(--spacing-1);
 }
 
 .btn__icon--right {
-  margin-left: calc(var(--spacing-2) * -1);
+  margin-left: var(--spacing-1);
 }
 
 /* Spinner styles */
@@ -247,7 +247,7 @@
 }
 
 .btn:hover:not(.btn--disabled) {
-  background: linear-gradient(315deg, #FF9F2D 0%, var(--color-primary) 50%, #FFB84D 100%);
+  background: linear-gradient(315deg, #FF9F2D 0%, var(--color-primary) 50%, #FFB84D 100%) !important;
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(255, 159, 45, 0.3);
 }
